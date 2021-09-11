@@ -183,7 +183,7 @@ http {
 
 
 ## Модули
-1. [AWS Auth](#https://github.com/anomalizer/ngx_aws_auth)
+ [AWS Auth](#https://github.com/anomalizer/ngx_aws_auth)
 2. Backtrace
 3. Brotli
 4. PAM Authentication
