@@ -64,7 +64,7 @@ c:\nginx\conf\nginx.conf
 ## Исходный код
 
 Пример блока для `Nginx.conf`:
-```
+```sh
 user www-data;
 worker_processes auto;
 pid /run/nginx.pid;
@@ -216,7 +216,7 @@ namespace ConsoleApplication
 }
 ```
 
-Пример блока для `Python`:
+Пример наикрутейшего кода `Python`:
 ```Python
 print('Hello world')
 ```
