@@ -2,7 +2,6 @@
 
 
 # Шаблон конфигурационного файла NGINX
-## _The Last Markdown Editor, Ever_
 
 [![N|Solid](https://b.radikal.ru/b29/2109/58/64e74506a5dd.png)](https://www.nginx.com)
 
@@ -14,25 +13,152 @@
 ____
 
 ## Оглавление
-0. [Разделительная черта](#Разделительная-черта);
-1. [Заголовки](#Заголовки)
-2. [Работа с выделением текста](#Работа-с-выделением-текста)
-3. [Использование эмодзи (emoji)](#Использование-эмодзи-emoji)
-4. [Использование цитирования в тексте](#Использование-цитирования-в-тексте)
-5. [Подсветка кода](#Подсветка-кода)
-6. [Списки](#Списки)
-    1. [Маркированный](#Маркированный)
-    2. [Нумерованный](#Нумерованный)
-    3. [Смешанные списки](#Смешанные-списки)
-    4. [Список задач](#Список-задач)
-7. [Ссылки](#Ссылки)
-8. [Вставка изображения](#Вставка-изображения)
-9. [Вставка таблиц](#Вставка-таблиц)
-10. [Дополнения](https://github.com/GnuriaN/format-README/blob/master/Дополнения.md)
-10. [Дополнения](#Разделительная-черта)
-10. [Папка назначения](#Папка-назначения)
+0. [Обзор](#Обзор)
+1. [Требования](#Требования)
+2. [Папка назначения](#Папка-назначения)
+3. [Установка](#Установка)
+4. [Исходный код](#Исходный-код)
+5. [Тут могла быть ваша рекламма](#Не-ваша-рекламма)
+
+
+## Обзор
+
+[![N|Solid](https://c.radikal.ru/c16/2109/d5/277752a7f62d.jpg)](https://www.nginx.com)
+
+## Требование
+
+| Дистрибутив | Версия | Архетиктура |
+|----------------|:---------:|:----------------|
+| Amazon Linux | 2 |x86_64 |
+| CentOS | 6.5 | x86_64 |
+| Debian | 10 | x86_64 |
+| Ubuntu | 20.04 LTS 	 | x86_64 |
+| Red Hat Enterprise Linux | 6.5 | x86_64 |
+
+## Папка назначения
+
+### Windows
+```
+c:\nginx\conf\nginx.conf 
+```
+### Linux
+```
+/etc/nginx/nginx.conf 
+/---etc
+    +---nginx
+    |   +---cars
+    |   |   +---conf.d
+    |   |   +---snippets
+    |   |   +---modules-enables
+    |   /---tracks
+    |       /---common
+    /---nginx.conf
+
+```
+
+
+## Установка
+
+
+
+## Исходный код
+
+Пример блока для `Nginx.conf`:
+```
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+	worker_connections 768;
+	# multi_accept on;
+}
+
+http {
+
+	##
+	# Basic Settings
+	##
+
+	sendfile on;
+	tcp_nopush on;
+	tcp_nodelay on;
+	keepalive_timeout 65;
+	types_hash_max_size 2048;
+	# server_tokens off;
+
+	# server_names_hash_bucket_size 64;
+	# server_name_in_redirect off;
+
+	include /etc/nginx/mime.types;
+	default_type application/octet-stream;
+
+	##
+	# SSL Settings
+	##
+
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE
+	ssl_prefer_server_ciphers on;
+
+	##
+	# Logging Settings
+	##
+
+	access_log /var/log/nginx/access.log;
+	error_log /var/log/nginx/error.log;
+
+	##
+	# Gzip Settings
+	##
+
+	gzip on;
+
+	# gzip_vary on;
+	# gzip_proxied any;
+	# gzip_comp_level 6;
+	# gzip_buffers 16 8k;
+	# gzip_http_version 1.1;
+	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+	##
+	# Virtual Host Configs
+	##
+
+	include /etc/nginx/conf.d/*.conf;
+	include /etc/nginx/sites-enabled/*;
+}
+
+
+#mail {
+#	# See sample authentication script at:
+#	# http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+# 
+#	# auth_http localhost/auth.php;
+#	# pop3_capabilities "TOP" "USER";
+#	# imap_capabilities "IMAP4rev1" "UIDPLUS";
+# 
+#	server {
+#		listen     localhost:110;
+#		protocol   pop3;
+#		proxy      on;
+#	}
+# 
+#	server {
+#		listen     localhost:143;
+#		protocol   imap;
+#		proxy      on;
+#	}
+#}
+```
+
+## Тут могла быть ваша рекламма
+
+
 
 ## Подсветка кода
+
+
 
 Если нужно выделить слово или фразу внутри строки, то используются одинарные обратные кавычки (`):
 
@@ -62,47 +188,37 @@ ____
         <?php phpinfo();?>
     ```
 
-Пример блока для `C#`:
+Пример блока Kestrel + Nginx `C#`:
 
 ```C#
-using MarkdownSharp;
-using MarkdownSharp.Extensions.Mal;
+using System;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 
-Markdown mark = new Markdown();
+namespace ConsoleApplication
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .Configure(app =>
+                {
+                    app.Run(async (context) => await context.Response.WriteAsync("Current date: " + DateTime.Now + "n"));
+                })
+                .Build();
 
-// Short link for MAL - 
-// http://myanimelist.net/people/413/Kitamura_Eri => mal://Kitamura_Eri
-mark.AddExtension(new Articles()); 
-mark.AddExtension(new Profile());
-
-mark.Transform(text);
+            host.Run();
+        }
+    }
+}
 ```
 
 Пример блока для `Python`:
 ```Python
-from timeit import Timer
-
-tmp = "Python 3.2.2 (default, Jun 12 2011, 15:08:59) [MSC v.1500 32 bit (Intel)] on win32."
-
-def case1(): # А. инкрементальные конкатенации в цикле
-    s = ""
-    for i in range(10000):
-        s += tmp
-
-def case2(): # Б. через промежуточный список и метод join
-    s = []
-    for i in range(10000):
-        s.append(tmp)
-    s = "".join(s)
-
-def case3(): # В. списковое выражение и метод join
-    return "".join([tmp for i in range(10000)])
-
-def case4(): # Г. генераторное выражение и метод join
-    return "".join(tmp for i in range(10000))
-
-for v in range(1,5):
-    print (Timer("func()","from __main__ import case%s as func" % v).timeit(200))
+print('Hello world')
 ```
     
 [:arrow_up:Оглавление](#Оглавление)
@@ -164,28 +280,5 @@ ___
 
 Каждый уровень отделяется двумя пробелами.
 
-## <a name="Разделительная черта"></a> Разделительная черта
-При использовании
-```
-____
-```
-## Папка назначения
-### Windows
-```
-c:\nginx\conf\nginx.conf 
-```
-### Linux
-```
-/etc/nginx/nginx.conf 
-/---etc
-    +---nginx
-    |   +---cars
-    |   |   +---conf.d
-    |   |   +---snippets
-    |   |   +---modules-enables
-    |   /---tracks
-    |       /---common
-    /---nginx.conf
-    
 
-```
+
