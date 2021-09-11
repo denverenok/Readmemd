@@ -88,7 +88,7 @@ c:\nginx\conf\nginx.conf
 ## Исходный код
 
 Пример блока для `Nginx.conf`:
-```sh
+```
 user www-data;
 worker_processes auto;
 pid /run/nginx.pid;
@@ -183,12 +183,12 @@ http {
 
 
 ## Модули
- [AWS Auth](#https://github.com/anomalizer/ngx_aws_auth)
-2. Backtrace
-3. Brotli
-4. PAM Authentication
-5. Array Var
-6. Akamai G2O
+1. [AWS Auth](https://github.com/anomalizer/ngx_aws_auth)
+2. [Backtrace](https://github.com/alibaba/nginx-backtrace)
+3. [Brotli](https://github.com/google/ngx_brotli)
+4. [PAM Authentication](https://github.com/sto/ngx_http_auth_pam_module)
+5. [Array Var](https://github.com/openresty/array-var-nginx-module)
+6. [Akamai G2O](https://github.com/kaltura/nginx_mod_akamai_g2o)
 
 
 [:arrow_up:Оглавление](#Оглавление)
