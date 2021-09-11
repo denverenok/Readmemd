@@ -6,8 +6,9 @@
 [![Build Status](https://img.shields.io/badge/buil-passing-green)](https://rebrain.com)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://mit-license.org/)
 [![download](https://img.shields.io/badge/downloads-0-red)](https://rebrain.com)
-[![Social](https://img.shields.io/badge/Telegram-social-blue?style=social&logo=appveyor)](https://web.telegram.org)
 [![releases](https://img.shields.io/badge/Nginx-1.21.3%7C1.21.2%7C1.21.1%7C1.21.0-blue)](https://github.com/nginx/nginx/releases)
+[![Social](https://img.shields.io/badge/Telegram-social-blue?style=social&logo=appveyor)](https://web.telegram.org)
+
 ____
 
 ## Оглавление
